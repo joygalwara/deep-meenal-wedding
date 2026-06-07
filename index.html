@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Deep & Meenal Wedding RSVP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Poppins,sans-serif;
+background:#faf7f3;
+overflow-x:hidden;
+}
+
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
+url('hero.jpg');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-family:'Cormorant Garamond',serif;
+font-size:4rem;
+}
+
+.hero p{
+font-size:1.3rem;
+margin-top:15px;
+}
+
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:15px 35px;
+background:#c8a96b;
+color:white;
+text-decoration:none;
+border-radius:30px;
+}
+
+section{
+padding:80px 20px;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+}
+
+.title{
+text-align:center;
+font-size:2.5rem;
+margin-bottom:40px;
+font-family:'Cormorant Garamond',serif;
+}
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.box{
+background:white;
+padding:20px;
+width:120px;
+text-align:center;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.box span{
+display:block;
+font-size:2rem;
+font-weight:700;
+}
+
+.rsvp{
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.rsvp input,
+.rsvp select,
+.rsvp textarea{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:10px;
+}
+
+.rsvp button{
+width:100%;
+padding:15px;
+background:#c8a96b;
+color:white;
+border:none;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+.success{
+display:none;
+margin-top:20px;
+padding:20px;
+background:#e7ffe7;
+border-radius:10px;
+}
+
+.music{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+border:none;
+background:#c8a96b;
+color:white;
+font-size:20px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="hero">
+
+<div>
+
+<h1>Deep Thakkar<br>&<br>Meenal Lohana</h1>
+
+<p>19–20 August 2026</p>
+
+<a href="#rsvp" class="btn">RSVP NOW</a>
+
+</div>
+
+</div>
+
+<section>
+
+<div class="container">
+
+<h2 class="title">Countdown To Our Wedding</h2>
+
+<div class="countdown">
+
+<div class="box"><span id="days">0</span>Days</div>
+<div class="box"><span id="hours">0</span>Hours</div>
+<div class="box"><span id="minutes">0</span>Minutes</div>
+<div class="box"><span id="seconds">0</span>Seconds</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 class="title">Venue</h2>
+
+<div style="text-align:center">
+
+<h3>Solaris Hotel</h3>
+
+<p>Indore, Madhya Pradesh</p>
+
+<p style="margin-top:15px;">
+Event schedule coming soon
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="rsvp">
+
+<div class="container">
+
+<h2 class="title">RSVP</h2>
+
+<form id="rsvpForm" class="rsvp">
+
+<input type="text" id="name" placeholder="Full Name" required>
+
+<input type="tel" id="mobile" placeholder="Mobile Number" required>
+
+<select id="attending" required>
+<option value="">Will you attend?</option>
+<option>Yes</option>
+<option>No</option>
+</select>
+
+<select id="guests">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5+</option>
+</select>
+
+<select id="meal">
+<option>Vegetarian</option>
+<option>Non Vegetarian</option>
+<option>Vegan</option>
+</select>
+
+<textarea id="message" placeholder="Message"></textarea>
+
+<button type="submit">
+Submit RSVP
+</button>
+
+<div class="success" id="success">
+Thank you for your RSVP ❤️
+</div>
+
+</form>
+
+</div>
+
+</section>
+
+<audio id="music" loop>
+<source src="music.mp3">
+</audio>
+
+<button class="music" onclick="toggleMusic()">
+♫
+</button>
+
+<script>
+
+const targetDate =
+new Date("August 19, 2026 00:00:00");
+
+setInterval(()=>{
+
+const now = new Date();
+
+const diff = targetDate - now;
+
+document.getElementById('days').innerHTML =
+Math.floor(diff/(1000*60*60*24));
+
+document.getElementById('hours').innerHTML =
+Math.floor(diff/(1000*60*60)%24);
+
+document.getElementById('minutes').innerHTML =
+Math.floor(diff/(1000*60)%60);
+
+document.getElementById('seconds').innerHTML =
+Math.floor(diff/1000%60);
+
+},1000);
+
+function toggleMusic(){
+
+let music=document.getElementById('music');
+
+if(music.paused){
+music.play();
+}
+else{
+music.pause();
+}
+
+}
+
+const SCRIPT_URL =
+"PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL";
+
+document
+.getElementById("rsvpForm")
+.addEventListener("submit",
+async function(e){
+
+e.preventDefault();
+
+const data = {
+
+name:name.value,
+mobile:mobile.value,
+attending:attending.value,
+guests:guests.value,
+meal:meal.value,
+message:message.value
+
+};
+
+await fetch(
+SCRIPT_URL,
+{
+method:"POST",
+body:JSON.stringify(data)
+}
+);
+
+document.getElementById("success")
+.style.display="block";
+
+const msg =
+`Hello Deep & Meenal,
+
+We have RSVP'd for your wedding.
+
+Name: ${data.name}
+Guests: ${data.guests}
+
+Looking forward to celebrating with you.`;
+
+window.open(
+`https://wa.me/919828584586?text=${encodeURIComponent(msg)}`
+);
+
+});
+
+</script>
+
+</body>
+
+</html>
